@@ -1,6 +1,7 @@
 package com.sachin.newsapp.presentation.di
 import com.sachin.newsapp.domain.repository.NewsRepository
 import com.sachin.newsapp.domain.usecase.GetNewsHeadline
+import com.sachin.newsapp.domain.usecase.GetSearchedNews
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,6 +17,14 @@ class UseCaseModule {
        newsRepository: NewsRepository
    ):GetNewsHeadline{
       return GetNewsHeadline(newsRepository)
+   }
+
+   @Singleton
+   @Provides
+   fun provideGetSearchedNewsUseCase(
+      newsRepository: NewsRepository
+   ):GetSearchedNews{
+      return GetSearchedNews(newsRepository)
    }
 }
 

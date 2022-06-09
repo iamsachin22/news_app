@@ -8,10 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sachin.newsapp.data.model.Article
 import com.sachin.newsapp.databinding.NewsListItemBinding
-import java.util.*
-
-
-class NewsAdapter: RecyclerView.Adapter<NewsAdapter.newsViewHolder>() {
+class NewsAdapter: RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     private val callback = object : DiffUtil.ItemCallback<Article>(){
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
@@ -27,12 +24,12 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.newsViewHolder>() {
     val differ = AsyncListDiffer(this,callback)
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): newsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val binding = NewsListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return newsViewHolder(binding)
+        return NewsViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: newsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val article = differ.currentList[position]
         holder.bind(article)
     }
@@ -42,19 +39,31 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.newsViewHolder>() {
     }
 
 
-    inner class newsViewHolder(
-        val binding:NewsListItemBinding
+    inner class NewsViewHolder(
+        private val binding:NewsListItemBinding
     ):RecyclerView.ViewHolder(binding.root){
         fun bind(article: Article){
             binding.textViewTitle.text = article.title
             binding.textViewDescription.text = article.description
-            binding.textViewPublishedAt.text = "Date : "+article.publishedAt
-            binding.textViewSource.text = "Source : "+article.source.name
+            binding.textViewPublishedAt.text = "Date : ${article.publishedAt}"
+            binding.textViewSource.text = "Source : ${article.source.name}"
 
             Glide.with(binding.imageArticle.context)
                 .load(article.urlToImage)
                 .into(binding.imageArticle)
+
+            binding.root.setOnClickListener {
+                onItemClickListener?.let {
+                    it(article)
+                }
+            }
         }
+    }
+
+    private var onItemClickListener : ((Article) ->Unit)?=null
+
+    fun setOnItemClickListener(listener:((Article) -> Unit)){
+        onItemClickListener = listener
     }
 
 

@@ -2,6 +2,7 @@ package com.sachin.newsapp.presentation.di
 
 import android.app.Application
 import com.sachin.newsapp.domain.usecase.GetNewsHeadline
+import com.sachin.newsapp.domain.usecase.GetSearchedNews
 import com.sachin.newsapp.presentation.viewmodel.NewsViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -16,11 +17,14 @@ class FactoryModule {
     @Provides
     fun provideNewsViewModelFactory(
         application: Application,
-        getNewsHeadline: GetNewsHeadline
+        getNewsHeadline: GetNewsHeadline,
+        getSearchedNews: GetSearchedNews
     ):NewsViewModelFactory{
         return NewsViewModelFactory(
             application,
-            getNewsHeadline
+            getNewsHeadline,
+            getSearchedNews
+
         )
     }
 }

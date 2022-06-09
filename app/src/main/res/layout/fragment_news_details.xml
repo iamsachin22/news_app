@@ -5,9 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".NewsDetailsFragment">
 
-    <TextView
+    <WebView
+        android:id="@+id/web_details"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Details Fragment" />
-
+        android:layout_height="match_parent" />
 </FrameLayout>

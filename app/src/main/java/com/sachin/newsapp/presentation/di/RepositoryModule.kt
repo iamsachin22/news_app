@@ -1,7 +1,7 @@
 package com.sachin.newsapp.presentation.di
 
 
-import com.sachin.newsapp.data.repository.NewsRepositoryImpl
+import com.sachin.newsapp.domain.repository.NewsRepositoryImpl
 import com.sachin.newsapp.data.repository.datasource.NewsRemoteDataSource
 import com.sachin.newsapp.domain.repository.NewsRepository
 import dagger.Module

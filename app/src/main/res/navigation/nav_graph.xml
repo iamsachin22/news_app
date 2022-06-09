@@ -27,5 +27,9 @@
         android:id="@+id/newsDetailsFragment"
         android:name="com.sachin.newsapp.NewsDetailsFragment"
         android:label="fragment_news_details"
-        tools:layout="@layout/fragment_news_details" />
+        tools:layout="@layout/fragment_news_details" >
+        <argument
+            android:name="selected_item"
+            app:argType="com.sachin.newsapp.data.model.Article" />
+    </fragment>
 </navigation>
