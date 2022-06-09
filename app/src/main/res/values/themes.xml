@@ -13,4 +13,18 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="text_header" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/roboto_black</item>
+    </style>
+
+    <style name="text_sub_header" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="android:textSize">@dimen/font_size_14</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
 </resources>
