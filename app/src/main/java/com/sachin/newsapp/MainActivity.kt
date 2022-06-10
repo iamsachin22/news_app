@@ -12,7 +12,6 @@ import com.sachin.newsapp.presentation.viewmodel.NewsViewModel
 import com.sachin.newsapp.presentation.viewmodel.NewsViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     @Inject

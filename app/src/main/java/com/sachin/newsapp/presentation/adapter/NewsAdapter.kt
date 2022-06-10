@@ -46,7 +46,7 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
             binding.textViewTitle.text = article.title
             binding.textViewDescription.text = article.description
             binding.textViewPublishedAt.text = "Date : ${article.publishedAt}"
-            binding.textViewSource.text = "Source : ${article.source.name}"
+            binding.textViewSource.text = "Source : ${article.source?.name}"
 
             Glide.with(binding.imageArticle.context)
                 .load(article.urlToImage)

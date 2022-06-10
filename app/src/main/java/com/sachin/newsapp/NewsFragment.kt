@@ -22,7 +22,7 @@ class NewsFragment : Fragment() {
     private lateinit var viewModel: NewsViewModel
     private lateinit var fragmentNewsBinding: FragmentNewsBinding
     private lateinit var newsAdapter: NewsAdapter
-    private var country = "in"
+    private var country = "us"
     private var page = 1
     private var isScrolling = false
     private var isLoading =false
@@ -135,7 +135,7 @@ class NewsFragment : Fragment() {
     private fun setSearchedNews(){
         fragmentNewsBinding.searchedView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.searchNews("in",query.toString(),page)
+                viewModel.searchNews("us",query.toString(),page)
                 viewSearchedNews()
                 return false
             }
@@ -143,7 +143,7 @@ class NewsFragment : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 MainScope().launch {
                     delay(2000)
-                    viewModel.searchNews("in",newText.toString(),page)
+                    viewModel.searchNews("us",newText.toString(),page)
                     viewSearchedNews()
                 }
                 return false
